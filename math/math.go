@@ -28,3 +28,12 @@ func IsPositive(a int ) bool{
 func Multiply(a, b int) int{
 	return a * b
 }
+
+func SafeMultiply(a, b int) (int , error){
+	result := a * b
+	if a != 0 && result/a != b{
+		return 0, fmt.Errorf("mutiplication overflow")
+	}
+
+	return result ,nil
+}
