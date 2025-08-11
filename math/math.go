@@ -132,3 +132,16 @@ func MultiplyMap(values map[string]int, configPath string) (map[string]int, erro
 	}
 	return result, nil
 }
+
+func CalculateDiscount(price float64, discount float64, isMember bool) (float64, error) {
+	if price < 0 || discount < 0 || discount > 100 {
+		return 0, fmt.Errorf("invalid input")
+	}
+
+	final := price * (1 - discount/100)
+	if isMember {
+		final *= 0.95
+	}
+
+	return math.Round(final*100) / 100, nil
+}
